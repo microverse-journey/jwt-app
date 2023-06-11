@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post "/signup", to: "users#create"
       post "/login", to: "sessions#create"
       get "/authorized", to: "sessions#show"
-      get "/dashboard", to: "users#show"
+      resources :users
     end
   end
   # Defines the root path route ("/")

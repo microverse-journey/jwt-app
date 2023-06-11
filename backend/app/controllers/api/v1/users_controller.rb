@@ -1,6 +1,15 @@
 class Api::V1::UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
     
+    def index
+        user = User.all
+        if user
+            render json: user
+        else
+            render json: {error: "User could not be found."}
+        end
+    end
+
     def create
         user = User.new(user_params)
         if user.save
